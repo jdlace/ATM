@@ -9,7 +9,8 @@ func inputString() -> String {
     let keyboard = NSFileHandle.fileHandleWithStandardInput()
     let inputData = keyboard.availableData
     
-    return NSString(data: inputData, encoding:NSUTF8StringEncoding) as! String
+    let input =   NSString(data: inputData, encoding:NSUTF8StringEncoding) as! String
+    return String(input.characters.first!)
 }
 
 
@@ -59,9 +60,11 @@ case 12345:
         
         print("You deposited \(deposit). Your balance is now \(balance).")
         
-    } else if (operation == "W" || operation == "w") {
+    } else if operation == "W" || operation == "w" {
         
         print("Enter the amount to withdraw.")
+        
+        withdraw = inputInteger()
         
         switch (balance < withdraw && balance >=  0 ? "Failure" :
             "Success")  {
@@ -79,7 +82,10 @@ case 12345:
             
         }
         
-    }
+    } else {
+            print("length: \(operation.characters.count)")
+}
+        
     
     
 case 67890:
@@ -118,6 +124,8 @@ case 67890:
             print("You have entered an invalid selection")
         }
         
+    } else {
+        print("length: \(operation.characters.count)")
     }
     
     
